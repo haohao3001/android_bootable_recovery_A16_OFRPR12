@@ -178,7 +178,7 @@
 
 			<text style="text_body1_dark">
 				<placement x="%col1_x%" y="%part_backup_info_y%" />
-				<text>{@backup_exp_size}:  %fox_total_backup</text>
+				<text>{@backup_exp_size}:  %fox_total_backup%</text>
 			</text>
 			
 			<text style="text_body1_dark">
