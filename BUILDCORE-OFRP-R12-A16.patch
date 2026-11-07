@@ -192,7 +192,7 @@ index 688ca8c..07290c7 100644
  APICHECK_COMMAND := $(JAVA) -Xmx4g -jar $(APICHECK)
  
 diff --git a/envsetup.sh b/envsetup.sh
-index 069c02b..fd4b1e2 100644
+index 069c02b..237fd24 100644
 --- a/envsetup.sh
 +++ b/envsetup.sh
 @@ -318,6 +318,14 @@ function printconfig()
@@ -210,11 +210,7 @@ index 069c02b..fd4b1e2 100644
  }
  
  function set_stuff_for_environment()
-@@ -1157,7 +1165,53 @@ validate_current_shell
- set_global_paths
- source_vendorsetup
- addcompletions
--
+@@ -1161,3 +1169,44 @@ addcompletions
  export ANDROID_BUILD_TOP=$(gettop)
  
  . $ANDROID_BUILD_TOP/vendor/twrp/build/envsetup.sh
@@ -227,13 +223,7 @@ index 069c02b..fd4b1e2 100644
 +    export FOX_MANIFEST_ROOT=$(gettop)
 +
 +    if [ -z "$NOT_ORANGEFOX" ]; then
-+       # myron: 本 fork 的 Soong 插件名为 fox_common.go / fox_recovery_defaults.go
-+       # (上游 R11.3 检测的是 orangefox_defaults.go / orangefox.mk),这里一并接受,
-+       # 否则会被判成 NOT_ORANGEFOX=1 -> 不生成 /tmp/<device>/fox_env.sh。
-+       if [ ! -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox_defaults.go -a \
-+            ! -f $FOX_MANIFEST_ROOT/bootable/recovery/orangefox.mk -a \
-+            ! -f $FOX_MANIFEST_ROOT/bootable/recovery/fox_common.go -a \
-+            ! -f $FOX_MANIFEST_ROOT/bootable/recovery/fox_recovery_defaults.go ]; then
++       if [ ! -f $FOX_MANIFEST_ROOT/bootable/recovery/fox_recovery_defaults.go -a ! -f $FOX_MANIFEST_ROOT/bootable/recovery/fox_common.go ]; then
 +   	  export NOT_ORANGEFOX=1
 +       fi
 +    fi
@@ -265,3 +255,4 @@ index 069c02b..fd4b1e2 100644
 +orangefox_envsetup
 +
 +# Darth9
+\ No newline at end of file
